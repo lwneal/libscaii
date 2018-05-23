@@ -9,6 +9,7 @@ setup(name='scaii',
         author_email='nealla@lwneal.com',
         packages=[
             'scaii',
+            'scaii/_internal_',
             'scaii/env',
             'scaii/protos',
             'scaii/sky_rts',

@@ -2,6 +2,7 @@
 This is a simple DLL and C func loader that communicates
 with the SCAII core at a very low level.
 """
+import os
 import platform
 from ctypes import c_void_p, c_size_t, c_ubyte, POINTER
 
@@ -39,6 +40,7 @@ class CoreMissing(Exception):
 
 SCAII_CORE = None
 
+
 try:
     if platform.system().lower() == 'windows':
         from ctypes import windll
@@ -48,7 +50,8 @@ try:
         SCAII_CORE = cdll.LoadLibrary('scaii_core.dylib')
     elif platform.system().lower() == 'linux':
         from ctypes import cdll
-        SCAII_CORE = cdll.LoadLibrary('libscaii_core.so')
+        lib_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'libscaii_core.so')
+        SCAII_CORE = cdll.LoadLibrary(lib_path)
     else:
         raise UnsupportedPlatformError(
             'We only support Linux, OS X (Darwin), and MSVC Windows\n'
