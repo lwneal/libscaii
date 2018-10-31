@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='scaii',
-        version='0.1.0',
+        version='0.1.1',
         description='Python bindings for https://github.com/SCAII',
         author='Larry Neal',
         author_email='nealla@lwneal.com',
