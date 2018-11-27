@@ -1,9 +1,22 @@
 #!/usr/bin/env python
-
+import shutil
 from setuptools import setup
+from setuptools.command.install import install
+from distutils.dir_util import copy_tree
+import os
+
+LUA_SRC = 'scaii/lua'
+LUA_DST = os.path.expanduser('~/.scaii/backends/sky-rts/maps/')
+
+class PostInstallCommand(install):
+    def run(self):
+        print('Installing SCAII .lua files to {}'.format(LUA_DST))
+        copy_tree(LUA_SRC, LUA_DST)
+        install.run(self)
+
 
 setup(name='scaii',
-        version='0.1.1',
+        version='0.1.2',
         description='Python bindings for https://github.com/SCAII',
         author='Larry Neal',
         author_email='nealla@lwneal.com',
@@ -27,6 +40,9 @@ setup(name='scaii',
                      ]
         },
       install_requires=[
-          "requests",
+          'shutil',
       ],
+      cmdclass={
+          'install': PostInstallCommand,
+      },
 )
