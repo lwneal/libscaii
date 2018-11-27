@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import shutil
 from setuptools import setup
 from setuptools.command.install import install
 from distutils.dir_util import copy_tree
@@ -16,7 +15,7 @@ class PostInstallCommand(install):
 
 
 setup(name='scaii',
-        version='0.1.2',
+        version='0.2.0',
         description='Python bindings for https://github.com/SCAII',
         author='Larry Neal',
         author_email='nealla@lwneal.com',
@@ -39,9 +38,7 @@ setup(name='scaii',
             'scaii': ['_internal_/libscaii_core.so',
                      ]
         },
-      install_requires=[
-          'shutil',
-      ],
+      install_requires=[],
       cmdclass={
           'install': PostInstallCommand,
       },
