@@ -15,7 +15,7 @@ class PostInstallCommand(install):
 
 
 setup(name='scaii',
-        version='0.2.0',
+        version='0.3.0',
         description='Python bindings for https://github.com/SCAII',
         author='Larry Neal',
         author_email='nealla@lwneal.com',
